@@ -35,4 +35,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/cicd-test-site:${{ steps.version.outputs.version }}"
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/cicd-test-site:${{ steps.version.outputs.version }}
