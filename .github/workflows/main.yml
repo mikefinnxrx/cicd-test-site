@@ -13,6 +13,13 @@ jobs:
         name: Checkout
         uses: actions/checkout@v3
       -
+        name: Get next version
+        uses: reecetech/version-increment@2022.10.3
+        id: version
+        with:
+          scheme: semver
+          increment: patch
+      -
         name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
@@ -28,4 +35,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/cicd-test-site:${{ GITHUB_RUN_NUMBER }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/cicd-test-site:${{ steps.version.outputs.version }}"
